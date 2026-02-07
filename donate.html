@@ -5,183 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>응원하기 - Syrup</title>
     <style>
-        /* 토스 표준 폰트 및 컬러 시스템 적용 */
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
         :root {
             --toss-blue: #3182f6;
-            --toss-blue-light: #e8f3ff;
             --toss-grey-bg: #f2f4f6;
             --toss-grey-text: #6b7684;
             --toss-dark-text: #333d4b;
-            --toss-white: #ffffff;
         }
 
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             font-family: 'Pretendard', sans-serif;
             background-color: var(--toss-grey-bg);
             color: var(--toss-dark-text);
-            display: flex;
-            justify-content: center;
-            -webkit-font-smoothing: antialiased;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh;
         }
 
         .container {
-            width: 100%;
-            max-width: 500px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            padding: 40px 24px;
-            box-sizing: border-box;
+            width: 100%; max-width: 400px; padding: 20px;
         }
 
-        /* 큰 헤더 영역 */
-        header {
-            margin-top: 20px;
-            margin-bottom: 40px;
-        }
-
-        header h1 {
-            font-size: 32px;
-            font-weight: 700;
-            line-height: 1.4;
-            margin: 0;
-            word-break: keep-all;
-        }
-
-        /* 토스 스타일 카드 */
         .card {
-            background-color: var(--toss-white);
-            border-radius: 28px;
-            padding: 24px;
-            margin-bottom: 12px;
+            background: white;
+            padding: 40px 24px;
+            border-radius: 32px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
         }
 
-        .card-title {
-            font-size: 15px;
-            color: var(--toss-grey-text);
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
+        h1 { font-size: 24px; font-weight: 700; margin-bottom: 12px; }
+        .desc { font-size: 16px; color: var(--toss-grey-text); margin-bottom: 32px; line-height: 1.5; }
 
-        /* 송금 대상 정보 (토스 스타일 리스트) */
-        .transfer-target {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .profile-img {
-            width: 48px;
-            height: 48px;
-            background-color: var(--toss-blue-light);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            color: var(--toss-blue);
-            font-weight: bold;
-        }
-
-        .target-info h2 {
-            margin: 0;
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .target-info p {
-            margin: 4px 0 0;
-            font-size: 14px;
-            color: var(--toss-grey-text);
-        }
-
-        /* 결제 수단 버튼 리스트 */
-        .payment-methods {
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .method-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: var(--toss-white);
-            padding: 20px 24px;
+        /* 계좌 정보 박스 */
+        .account-box {
+            background-color: var(--toss-grey-bg);
+            padding: 20px;
             border-radius: 20px;
+            margin-bottom: 24px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .account-box:active { background-color: #e5e8eb; }
+
+        .bank-name { font-size: 14px; color: var(--toss-grey-text); margin-bottom: 4px; }
+        .account-number { font-size: 18px; font-weight: 700; color: var(--toss-dark-text); }
+        .account-holder { font-size: 14px; color: var(--toss-blue); margin-top: 8px; font-weight: 600; }
+
+        /* 토스 앱 열기 버튼 */
+        .toss-btn {
+            display: block;
+            background-color: var(--toss-blue);
+            color: white;
+            padding: 18px;
+            border-radius: 16px;
             text-decoration: none;
-            color: var(--toss-dark-text);
             font-weight: 700;
             font-size: 17px;
-            transition: transform 0.1s ease;
-        }
-
-        .method-btn:active {
-            transform: scale(0.98);
-            background-color: #fafafa;
-        }
-
-        /* 우측 화살표 아이콘 */
-        .arrow {
-            color: #ccc;
-            font-size: 18px;
-        }
-
-        /* 하단 고정 버튼 느낌 */
-        .footer-action {
-            margin-top: auto;
-            padding-bottom: 20px;
-            text-align: center;
+            margin-bottom: 20px;
         }
 
         .back-link {
             color: var(--toss-grey-text);
             text-decoration: none;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 500;
         }
 
-        /* 포인트 컬러 버튼 (카카오 전용) */
-        .kakao-text { color: #3c1e1e; }
-        .toss-text { color: var(--toss-blue); }
+        /* 복사 완료 알림 창 */
+        #toast {
+            visibility: hidden;
+            min-width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 10px;
+            padding: 12px;
+            position: fixed;
+            z-index: 1;
+            bottom: 30px;
+            font-size: 14px;
+        }
 
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <h1>얼마나<br>후원할까요?</h1>
-    </header>
-
     <div class="card">
-        <div class="card-title">받는 분</div>
-        <div class="transfer-target">
-            <div class="profile-img">S</div>
-            <div class="target-info">
-                <h2>Syrup 개발자</h2>
-                <p>서버 유지비로 사용됩니다</p>
-            </div>
+        <h1>개발자 응원하기</h1>
+        <p class="desc">Syrup은 여러분의 소중한 후원으로<br>서버를 안정적으로 유지하고 있습니다.</p>
+
+        <div class="account-box" onclick="copyAccount()">
+            <div class="bank-name">토스뱅크 (가상계좌)</div>
+            <div class="account-number">1908-1075-9375</div>
+            <div class="account-holder">예금주: 김민서</div>
+            <div style="font-size: 12px; color: #b0b8c1; margin-top: 10px;">클릭해서 계좌번호 복사</div>
         </div>
-    </div>
 
-    <div class="payment-methods">
-            <span class="toss-text">토스로 보내기</span>
-            <span class="toos-text">토스 1908-1075-9375 예금주 김민서</span>
-
-
-            <span class="arrow">〉</span>
-        </a>
-
-    <div class="footer-action">
-        <a href="index.html" class="back-link">다음에 하기</a>
+        <a href="supertoss://send?bank=토스뱅크&account=190810759375" class="toss-btn">토스 앱에서 송금하기</a>
+        <a href="index.html" class="back-link">나중에 할래요</a>
     </div>
 </div>
+
+<div id="toast">계좌번호가 복사되었습니다.</div>
+
+<script>
+    function copyAccount() {
+        const accountNumber = "190810759375";
+        navigator.clipboard.writeText(accountNumber).then(() => {
+            const toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        });
+    }
+</script>
 
 </body>
 </html>
