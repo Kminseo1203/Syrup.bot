@@ -3,55 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>후원하기 - Syrup</title>
+    <title>응원하기 - Syrup</title>
     <style>
+        /* 토스 표준 폰트 및 컬러 시스템 적용 */
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-        
-        body { margin: 0; font-family: 'Pretendard', sans-serif; background-color: #f2f4f6; color: #333d4b; }
-        
+
+        :root {
+            --toss-blue: #3182f6;
+            --toss-blue-light: #e8f3ff;
+            --toss-grey-bg: #f2f4f6;
+            --toss-grey-text: #6b7684;
+            --toss-dark-text: #333d4b;
+            --toss-white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--toss-grey-bg);
+            color: var(--toss-dark-text);
+            display: flex;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
         .container {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            min-height: 100vh; padding: 0 24px;
+            width: 100%;
+            max-width: 500px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 24px;
+            box-sizing: border-box;
         }
 
-        .donate-card {
-            background: white; width: 100%; max-width: 400px;
-            padding: 40px 24px; border-radius: 32px; text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+        /* 큰 헤더 영역 */
+        header {
+            margin-top: 20px;
+            margin-bottom: 40px;
         }
 
-        .title { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
-        .desc { font-size: 16px; color: #6b7684; margin-bottom: 32px; line-height: 1.5; }
-
-        .payment-list { display: flex; flex-direction: column; gap: 12px; }
-
-        .payment-btn {
-            display: flex; align-items: center; justify-content: center;
-            padding: 16px; border-radius: 16px; text-decoration: none;
-            font-weight: 700; font-size: 16px; transition: 0.2s;
+        header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin: 0;
+            word-break: keep-all;
         }
 
-        .toss-btn { background-color: #3182f6; color: white; }
-        .kakao-btn { background-color: #fee500; color: #191919; }
+        /* 토스 스타일 카드 */
+        .card {
+            background-color: var(--toss-white);
+            border-radius: 28px;
+            padding: 24px;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            color: var(--toss-grey-text);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        /* 송금 대상 정보 (토스 스타일 리스트) */
+        .transfer-target {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .profile-img {
+            width: 48px;
+            height: 48px;
+            background-color: var(--toss-blue-light);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            color: var(--toss-blue);
+            font-weight: bold;
+        }
+
+        .target-info h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .target-info p {
+            margin: 4px 0 0;
+            font-size: 14px;
+            color: var(--toss-grey-text);
+        }
+
+        /* 결제 수단 버튼 리스트 */
+        .payment-methods {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .method-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--toss-white);
+            padding: 20px 24px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--toss-dark-text);
+            font-weight: 700;
+            font-size: 17px;
+            transition: transform 0.1s ease;
+        }
+
+        .method-btn:active {
+            transform: scale(0.98);
+            background-color: #fafafa;
+        }
+
+        /* 우측 화살표 아이콘 */
+        .arrow {
+            color: #ccc;
+            font-size: 18px;
+        }
+
+        /* 하단 고정 버튼 느낌 */
+        .footer-action {
+            margin-top: auto;
+            padding-bottom: 20px;
+            text-align: center;
+        }
 
         .back-link {
-            margin-top: 24px; color: #8b95a1; text-decoration: none; font-size: 15px;
-            font-weight: 500;
+            color: var(--toss-grey-text);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
         }
+
+        /* 포인트 컬러 버튼 (카카오 전용) */
+        .kakao-text { color: #3c1e1e; }
+        .toss-text { color: var(--toss-blue); }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="donate-card">
-            <div class="title">개발자 응원하기</div>
-            <p class="desc">Syrup은 여러분의 소중한 후원으로<br>서버를 안정적으로 유지하고 있습니다.</p>
 
-            <div class="payment-list">
-                <a href="https://toss.me/사용자아이디" class="payment-btn toss-btn">토스로 송금하기</a>
-                <a href="#" class="payment-btn kakao-btn">카카오페이로 후원하기</a>
+<div class="container">
+    <header>
+        <h1>얼마나<br>후원할까요?</h1>
+    </header>
+
+    <div class="card">
+        <div class="card-title">받는 분</div>
+        <div class="transfer-target">
+            <div class="profile-img">S</div>
+            <div class="target-info">
+                <h2>Syrup 개발자</h2>
+                <p>서버 유지비로 사용됩니다</p>
             </div>
         </div>
-        <a href="index.html" class="back-link">나중에 할래요</a>
     </div>
+
+    <div class="payment-methods">
+            <span class="toss-text">토스로 보내기</span>
+            <span class="toos-text">토스 1908-1075-9375 예금주 김민서</span>
+
+
+            <span class="arrow">〉</span>
+        </a>
+
+    <div class="footer-action">
+        <a href="index.html" class="back-link">다음에 하기</a>
+    </div>
+</div>
+
 </body>
 </html>
