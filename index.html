@@ -3,135 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syrup - 전문적인 디스코드 봇</title>
+    <title>Syrup - 달콤한 서버 관리</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap');
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
         body {
             margin: 0; padding: 0;
             font-family: 'Pretendard', sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
-            line-height: 1.6;
+            background-color: #f2f4f6; /* 토스 배경색 */
+            color: #333d4b; /* 토스 메인 텍스트색 */
+            display: flex; justify-content: center;
         }
 
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 80px 20px;
-            text-align: center;
+            max-width: 500px; width: 100%;
+            padding: 60px 24px;
         }
 
-        header h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin: 0;
-            background: linear-gradient(to right, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        header { text-align: left; margin-bottom: 40px; }
+        
+        h1 { font-size: 40px; font-weight: 800; margin: 0; letter-spacing: -1px; }
+        .sub-title { font-size: 18px; color: #6b7684; margin-top: 12px; font-weight: 500; }
+
+        /* 토스 스타일 카드 */
+        .card-section {
+            background: white;
+            padding: 24px;
+            border-radius: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 16px;
         }
 
-        .tagline {
-            font-size: 1.25rem;
-            color: #94a3b8;
-            margin-top: 1rem;
+        .feature-item {
+            display: flex; align-items: center; margin: 16px 0;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin: 60px 0;
-        }
+        .feature-text h3 { margin: 0; font-size: 18px; font-weight: 700; }
+        .feature-text p { margin: 4px 0 0; color: #6b7684; font-size: 15px; }
 
-        .card {
-            background: #1e293b;
-            padding: 32px;
-            border-radius: 16px;
-            text-align: left;
-            border: 1px solid #334155;
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: #38bdf8;
-            font-size: 1.5rem;
-        }
-
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-top: 40px;
-        }
+        .btn-group { margin-top: 40px; display: flex; flex-direction: column; gap: 12px; }
 
         .btn {
-            padding: 16px 32px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.2s;
-            cursor: pointer;
+            padding: 18px; border-radius: 16px; font-weight: 700;
+            text-decoration: none; text-align: center; font-size: 17px;
+            transition: 0.2s ease-in-out;
         }
 
-        .btn-primary {
-            background-color: #5865f2;
-            color: white;
-            border: none;
-        }
-
-        .btn-primary:hover { background-color: #4752c4; }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: #f8fafc;
-            border: 1px solid #334155;
-        }
-
-        .btn-secondary:hover { background-color: #334155; }
+        .btn-blue { background-color: #3182f6; color: white; }
+        .btn-blue:hover { background-color: #1b64da; }
+        
+        .btn-light { background-color: #e8f3ff; color: #1b64da; }
 
         footer {
-            margin-top: 100px;
-            padding-top: 40px;
-            border-top: 1px solid #1e293b;
-            font-size: 0.875rem;
-            color: #64748b;
+            margin-top: 60px; text-align: center; font-size: 13px; color: #8b95a1;
         }
 
-        footer a { color: #94a3b8; text-decoration: none; margin: 0 10px; }
+        footer a { color: #8b95a1; text-decoration: none; margin: 0 8px; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Syrup</h1>
-            <p class="tagline">당신의 디스코드 커뮤니티를 위한 가장 신뢰할 수 있는 솔루션</p>
+            <p class="sub-title">서버 관리를 더 쉽고 달콤하게.</p>
         </header>
 
-        <div class="grid">
-            <div class="card">
-                <h3>고음질 오디오</h3>
-                <p>고성능 디코딩 기술을 바탕으로 한 실시간 음악 스트리밍 서비스를 제공합니다.</p>
+        <div class="card-section">
+            <div class="feature-item">
+                <div class="feature-text">
+                    <h3>고음질 스트리밍</h3>
+                    <p>끊김 없이 선명한 사운드를 경험하세요.</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>지능형 서버 관리</h3>
-                <p>간편한 명령어로 채널을 정돈하고 시스템 로그를 완벽하게 추적합니다.</p>
-            </div>
-            <div class="card :">
-                <h3>개인정보 보호 정책</h3>
-                <p>재생이 종료된 데이터는 즉시 삭제하며, 어떠한 음원 파일도 서버에 저장하지 않습니다.</p>
+        </div>
+
+        <div class="card-section">
+            <div class="feature-item">
+                <div class="feature-text">
+                    <h3>스마트 관리</h3>
+                    <p>복잡한 명령어 대신 간결한 관리를 지원합니다.</p>
+                </div>
             </div>
         </div>
 
         <div class="btn-group">
-            <a href="https://discord.com/oauth2/authorize?client_id=1469599158250770525&permissions=8&scope=bot+applications.commands" class="btn btn-primary">봇 초대하기</a>
-            <a href="donate.html" class="btn btn-secondary">개발자 후원하기</a>
+            <a href="https://discord.com/oauth2/authorize?client_id=1469599158250770525&permissions=8&scope=bot+applications.commands" class="btn btn-blue">봇 초대하기</a>
+            <a href="donate.html" class="btn btn-light">개발자 응원하기</a>
         </div>
 
         <footer>
             <p>© 2026 Syrup Team. All rights reserved.</p>
-            <a href="https://kminseo1203.github.io/Privacy-And-Tos/">개인정보 처리방침</a>
-            <a href="https://kminseo1203.github.io/Privacy-And-Tos/">이용약관</a>
+            <a href="https://kminseo1203.github.io/Privacy-And-Tos/">약관 및 정책</a>
         </footer>
     </div>
 </body>
