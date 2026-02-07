@@ -3,47 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>개발자 응원하기 - Syrup</title>
+    <title>Syrup 지원하기</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700&display=swap');
-        body { 
-            margin: 0; font-family: 'Pretendard', sans-serif; 
-            background: #0f172a; color: white; 
-            display: flex; justify-content: center; align-items: center; 
-            min-height: 100vh; 
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap');
+        body { margin: 0; font-family: 'Pretendard', sans-serif; background: #0f172a; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        
+        .donate-container {
+            background: #1e293b;
+            padding: 40px;
+            border-radius: 24px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid #334155;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
-        .box { 
-            background: #1e293b; padding: 40px; border-radius: 24px; 
-            max-width: 450px; width: 90%; text-align: center; 
-            border: 1px solid #334155; 
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+        .icon-circle {
+            width: 60px; height: 60px;
+            background: #38bdf8;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; font-weight: bold; color: #0f172a;
         }
-        h2 { margin-top: 0; color: #38bdf8; font-size: 1.75rem; }
-        p { color: #94a3b8; margin-bottom: 30px; line-height: 1.6; word-break: keep-all; }
-        .payment-info { 
-            background: #0f172a; padding: 25px; border-radius: 12px; 
-            font-weight: bold; margin-bottom: 20px; border: 1px solid #334155;
-            color: #f8fafc;
+
+        h2 { margin: 0 0 10px; font-size: 1.5rem; }
+        p { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; }
+
+        .payment-methods { display: flex; flex-direction: column; gap: 12px; }
+
+        .payment-btn {
+            display: flex; align-items: center; justify-content: center;
+            padding: 14px; border-radius: 12px;
+            text-decoration: none; font-weight: 700;
+            transition: 0.2s; border: none; cursor: pointer;
         }
-        .back-link { 
-            display: inline-block; margin-top: 20px; 
-            color: #64748b; text-decoration: none; 
-            font-size: 0.9rem; transition: 0.2s;
-        }
-        .back-link:hover { color: #38bdf8; }
+
+        /* 각 결제 수단별 색상 */
+        .toss { background-color: #0064ff; color: white; }
+        .kakao { background-color: #fee500; color: #191919; }
+        
+        .payment-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        .notice { margin-top: 25px; font-size: 0.8rem; color: #64748b; }
+        .back-link { display: inline-block; margin-top: 30px; color: #94a3b8; text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid #334155; }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h2>개발자 응원하기</h2>
-        <p>Syrup 봇의 안정적인 서버 운영과 지속적인 업데이트를 위해 여러분의 소중한 후원을 기다립니다. 보내주신 성원은 서버 유지비와 개발자의 커피 비용으로 전액 사용됩니다.</p>
-        
-        <div class="payment-info">
-            아래 링크를 통해 후원이 가능합니다:<br><br>
-            <a href="여기에_후원_링크_입력" style="color: #38bdf8; text-decoration: none;">[후원 페이지로 이동하기]</a>
-        </div>
 
-        <a href="index.html" class="back-link">← 메인 페이지로 돌아가기</a>
+    <div class="donate-container">
+        <div class="icon-circle">S</div>
+        <h2>개발자 응원하기</h2>
+        <p>Syrup은 여러분의 소중한 후원으로 운영됩니다.<br>보내주신 후원금은 전액 서버 유지비로 사용됩니다.</p>
+
+        <div class="payment-methods">
+            <p class="notice">* 토스로 간편 송금!</p>
+            <p class="notice">* 토스 1908-1075-9375 예금주 김민서</p>
+
+        <p class="notice">* 후원은 자발적인 참여이며, 봇의 모든 기능 이용에는 차별이 없습니다.</p>
+
+        <a href="index.html" class="back-link">메인 페이지로 돌아가기</a>
     </div>
+
 </body>
 </html>
